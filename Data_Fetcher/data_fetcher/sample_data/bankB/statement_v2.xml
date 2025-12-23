@@ -1,0 +1,9 @@
+<Statement>
+  <Account id="B-CHK-11" currency="CAD">
+    <Balance current="220.00" available="200.00"/>
+    <Transactions>
+      <Tx d="2025-07-28" amt="-23.45" m="Amazon CA"/>
+      <Tx d="2025-07-30" amt="-12.99" m="CoffeeShop"/>
+    </Transactions>
+  </Account>
+</Statement>

@@ -1,0 +1,111 @@
+"""
+Config-Driven Deterministic Data Transformer (SQL ⇆ NoSQL)
+
+One-file reference implementation with:
+- SQL → NoSQL (MongoDB) pipeline
+- NoSQL (MongoDB) → SQL pipeline
+- YAML-driven field mappings + simple transformation rules
+- Strict validation via Pydantic (optional Pandera hook shown)
+- Idempotent/batch upsert
+
+USAGE (examples)
+---------------
+# 1) SQL → NoSQL
+python transformer.py sql_to_nosql \
+  --sql-url "postgresql+psycopg2://user:pass@localhost:5432/db" \
+  --sql-source "select * from raw_transactions" \
+  --mongo-uri "mongodb://localhost:27017" \
+  --mongo-db finance \
+  --mongo-coll normalized_transactions \
+  --mapping mappings/transactions_sql_to_nosql.yaml \
+  --upsert-key account_id,transaction_id
+
+# 2) NoSQL → SQL
+python transformer.py nosql_to_sql \
+  --mongo-uri "mongodb://localhost:27017" \
+  --mongo-db finance \
+  --mongo-coll normalized_transactions \
+  --sql-url "postgresql+psycopg2://user:pass@localhost:5432/db" \
+  --sql-target-table "transactions_normalized" \
+  --mapping mappings/transactions_nosql_to_sql.yaml \
+  --create-table
+
+DEPENDENCIES
+------------
+- pyyaml
+- sqlalchemy
+- pandas
+- pymongo
+- pydantic
+- (optional) pandera for dataframes validation
+
+pip install pyyaml sqlalchemy pandas pymongo pydantic pandera psycopg2-binary
+
+MAPPING FILE EXAMPLES (put these in ./mappings/)
+------------------------------------------------
+# FILE: mappings/transactions_sql_to_nosql.yaml
+# Direction: SQL → NoSQL. Map SQL column names to canonical JSON fields.
+# Includes fallbacks and simple rules (default, cast, alias list).
+
+# --- BEGIN YAML ---
+# source_kind: sql
+# target_kind: nosql
+# fields:
+#   amount:
+#     candidates: [amount, amt, debit]
+#     cast: decimal(18,2)
+#   currency:
+#     candidates: [currency, ccy]
+#     default: USD
+#   description:
+#     candidates: [description, descr, narrative, narr]
+#   account_id:
+#     candidates: [account_id, acct_id, acct_no, account]
+#   transaction_id:
+#     candidates: [transaction_id, txn_id, id]
+# rules:
+#   drop_null_target_fields: true
+#   trim_strings: true
+# validation_model: TransactionDoc
+# # Optionally define a Pydantic model inline (see Pydantic section below)
+# pydantic_models:
+#   TransactionDoc:
+#     amount: float
+#     currency: str
+#     description: str
+#     account_id: str
+#     transaction_id: str
+# --- END YAML ---
+
+# FILE: mappings/transactions_nosql_to_sql.yaml
+# Direction: NoSQL → SQL. Provide canonical JSON → SQL column mapping & SQL types.
+
+# --- BEGIN YAML ---
+# source_kind: nosql
+# target_kind: sql
+# target_sql:
+#   table: transactions_normalized
+#   columns:
+#     amount: NUMERIC(18,2)
+#     currency: VARCHAR(10)
+#     description: TEXT
+#     account_id: VARCHAR(64)
+#     transaction_id: VARCHAR(64)
+# fields:
+#   amount: {candidates: [amount]}
+#   currency: {candidates: [currency]}
+#   description: {candidates: [description]}
+#   account_id: {candidates: [account_id]}
+#   transaction_id: {candidates: [transaction_id]}
+# rules:
+#   trim_strings: true
+# validation_model: TransactionRow
+# pydantic_models:
+#   TransactionRow:
+#     amount: float
+#     currency: str
+#     description: str
+#     account_id: str
+#     transaction_id: str
+# --- END YAML ---
+"""

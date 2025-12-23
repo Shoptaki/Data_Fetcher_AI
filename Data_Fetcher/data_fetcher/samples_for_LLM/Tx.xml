@@ -1,0 +1,24 @@
+<Statement>
+  <Txn>
+    <Dt>2024-07-05</Dt>
+    <Ref>Pay for the gas at BP</Ref>
+    <Val></Val>            <!-- amount missing -->
+    <Curr>USD</Curr>
+  </Txn>
+  <Txn>
+    <Dt>2024-07-06</Dt>
+    <Ref>Payroll ACME</Ref>
+    <Val>2500</Val>
+    <Curr></Curr>          <!-- currency missing -->
+  </Txn>
+  <Txn>
+    <Dt>2024-07-07</Dt>
+    <Ref>Café Latte Starbucks</Ref>
+    <Val>-5.25</Val>
+    <!-- currency entirely absent -->
+  </Txn>
+</Statement>
+
+
+
+

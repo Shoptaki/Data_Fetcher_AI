@@ -1,0 +1,4 @@
+txn_date,debit_amount,ccy,vendor,txn_category,acct_ref,id
+2025/07/28,23.45,CAD,Amazon CA,Retail,B-CHK-11,B-T1
+2025/07/30,12.99,CAD,CoffeeShop,Food,B-CHK-11,B-T2
+2025/08/01,1000.00,CAD,Salary,Income,B-CHK-11,B-T3

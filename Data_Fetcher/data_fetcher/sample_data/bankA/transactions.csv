@@ -1,0 +1,4 @@
+date,amount,currency,merchant,category,account_id,txn_id
+2025-07-28,-23.45,USD,AMZN Mkt,Shopping,ACHK-001,A-TX-1
+2025-07-29,-4.50,USD,Starbcks,Food & Beverage,ACHK-001,A-TX-2
+2025-07-30,1500.00,USD,Payroll,Income,ACHK-001,A-TX-3

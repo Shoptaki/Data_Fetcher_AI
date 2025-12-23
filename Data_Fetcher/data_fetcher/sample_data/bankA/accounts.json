@@ -1,0 +1,29 @@
+{
+  "institution_id": "bank_a",
+  "accounts": [
+    {
+      "account_id": "ACHK-001",
+      "name": "Everyday Checking",
+      "type": "depository",
+      "subtype": "checking",
+      "balances": {
+        "current": 1100.25,
+        "available": 1030.25,
+        "iso_currency_code": "USD"
+      },
+      "mask": "0001"
+    },
+    {
+      "account_id": "ASAV-002",
+      "name": "High Yield Savings",
+      "type": "depository",
+      "subtype": "savings",
+      "balances": {
+        "current": 5023.1,
+        "available": 5023.1,
+        "iso_currency_code": "USD"
+      },
+      "mask": "0002"
+    }
+  ]
+}

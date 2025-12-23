@@ -1,0 +1,25 @@
+{
+  "institution": "bank_c",
+  "accounts": [
+    {
+      "acct": "C-SAV-9",
+      "currency": "EUR",
+      "txns": [
+        {
+          "id": "C1",
+          "when": "2025-07-20T10:00:00Z",
+          "amt": -15.0,
+          "who": "Uber",
+          "mcc": "4121"
+        },
+        {
+          "id": "C2",
+          "when": "2025-07-21T09:00:00Z",
+          "amt": 500.0,
+          "who": "Wire In",
+          "mcc": null
+        }
+      ]
+    }
+  ]
+}

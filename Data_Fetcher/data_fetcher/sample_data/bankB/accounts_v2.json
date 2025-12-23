@@ -1,0 +1,17 @@
+{
+  "bank": "bank_b",
+  "accounts_list": [
+    {
+      "id": "B-CHK-11",
+      "official_name": "Personal Chequing",
+      "kind": "depository",
+      "subkind": "checking",
+      "balance": {
+        "cur": 220.0,
+        "avail": 200.0,
+        "ccy": "CAD"
+      },
+      "last4": "1111"
+    }
+  ]
+}

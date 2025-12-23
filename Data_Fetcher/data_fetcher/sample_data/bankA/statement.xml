@@ -1,0 +1,20 @@
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:camt.053.001.02">
+  <BkToCstmrStmt>
+    <Stmt>
+      <Id>BA-STMT-2025-07</Id>
+      <Bal>
+        <Amt Ccy="USD">1100.25</Amt>
+      </Bal>
+      <Ntry>
+        <BookgDt><Dt>2025-07-28</Dt></BookgDt>
+        <Amt Ccy="USD">-23.45</Amt>
+        <NtryDtls><TxDtls><RmtInf><Ustrd>AMZN Mkt</Ustrd></RmtInf></TxDtls></NtryDtls>
+      </Ntry>
+      <Ntry>
+        <BookgDt><Dt>2025-07-29</Dt></BookgDt>
+        <Amt Ccy="USD">-4.50</Amt>
+        <NtryDtls><TxDtls><RmtInf><Ustrd>Starbcks</Ustrd></RmtInf></TxDtls></NtryDtls>
+      </Ntry>
+    </Stmt>
+  </BkToCstmrStmt>
+</Document>
